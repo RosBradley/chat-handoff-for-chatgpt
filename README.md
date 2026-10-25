@@ -5,7 +5,7 @@ AI tools, preserving context, decisions, files, and next steps.
 
 [GitHub repository](https://github.com/RosBradley/chat-handoff-for-chatgpt)
 
-**Repository version: 1.1.1.** Plugin and skill ID: `chat-handoff`.
+**Repository version: 1.1.2.** Plugin and skill ID: `chat-handoff`.
 Adapted from Chat Handoff for Claude v0.3.5 under its MIT license.
 
 ## Why use Chat Handoff?
@@ -31,7 +31,7 @@ or lower token usage.
 
 ## Install in ChatGPT
 
-Use the ready-made **`chat-handoff-plugin-1.1.1.zip`**. You do not need Codex,
+Use the ready-made **`chat-handoff-plugin-1.1.2.zip`**. You do not need Codex,
 Python, Terminal or an API key for this installation.
 
 This route requires **Plugin Creator** to be available in your ChatGPT account
@@ -141,7 +141,7 @@ a local copy for Codex discovery; build scripts package that same source.
 ## Develop in Codex
 
 Clone the [repository](https://github.com/RosBradley/chat-handoff-for-chatgpt)
-once its source has been uploaded, or extract the full source ZIP. Open the
+or extract the full source ZIP. Open the
 `chat-handoff-for-chatgpt` folder in Codex and ask it to read `AGENTS.md` and
 `docs/CODEX-HANDOFF.md` before making changes.
 To install the skill for this local repository, run:

@@ -2,7 +2,7 @@
 
 ## Install in ChatGPT
 
-Use **chat-handoff-plugin-1.1.1.zip**, the ready-made plugin download. There is
+Use **chat-handoff-plugin-1.1.2.zip**, the ready-made plugin download. There is
 nothing to build, and this route needs no Codex, Python, Terminal or API key.
 Keep the ZIP intact when attaching it.
 
@@ -11,7 +11,7 @@ permission to create and use plugins. The conversation can be in regular Chat
 or Work where those features are enabled.
 
 1. Open [GitHub Releases](https://github.com/RosBradley/chat-handoff-for-chatgpt/releases)
-   and choose **chat-handoff-plugin-1.1.1.zip** under the release's assets.
+   and choose **chat-handoff-plugin-1.1.2.zip** under the release's assets.
    If no release asset is available yet, use the ZIP supplied by the maintainer.
    GitHub's automatic **Source code (zip)** contains the repository files.
 2. Start a new ChatGPT chat. Type `@`, search for **Plugin Creator**, and select it.
@@ -36,7 +36,7 @@ it does not install into your other accounts automatically.
 
 In the new chat, select Chat Handoff and ask it to list its supported commands
 and installed skill version without creating files. This package's version is
-1.1.1. Then try `.push?`, which assesses handoff readiness without saving anything.
+1.1.2. Then try `.push?`, which assesses handoff readiness without saving anything.
 For a useful first task, use the skill in a conversation containing work you
 want to carry forward.
 
@@ -72,9 +72,9 @@ or needs to provide copyable handoff text.
 
 | File | Intended use |
 | --- | --- |
-| chat-handoff-plugin-1.1.1.zip | ChatGPT Plugin Creator installation above. |
-| chat-handoff-for-chatgpt-1.1.1.zip | Full source repository for development or the local Codex installer. |
-| chat-handoff-skill-1.1.1.zip | Standalone skill folder for clients that explicitly support that format. |
+| chat-handoff-plugin-1.1.2.zip | ChatGPT Plugin Creator installation above. |
+| chat-handoff-for-chatgpt-1.1.2.zip | Full source repository for development or the local Codex installer. |
+| chat-handoff-skill-1.1.2.zip | Standalone skill folder for clients that explicitly support that format. |
 
 The plugin package contains the skill; you do not also need to install the
 standalone skill. Avoid enabling both copies in the same scope.

@@ -5,7 +5,7 @@ description: "Preserve and resume chat or project work across chats and AI tools
 
 # Chat Handoff
 
-Version: 1.1.1
+Version: 1.1.2
 
 Carry verified state into a fresh conversation without repeating settled work.
 Support the user's Claude command vocabulary and portable Markdown packages.

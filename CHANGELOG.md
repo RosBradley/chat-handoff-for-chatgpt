@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2 — 2026-10-25
+
+- Validate ZIP entry paths consistently across Windows, macOS and Linux.
+- Expand regression coverage for rooted paths, drive paths and traversal.
+- Preserve both upstream and RosBradley MIT copyright notices.
+
 ## 1.1.1 — 2026-10-24
 
 - Check which selected project chats can be read before preparing a full export.

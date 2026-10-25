@@ -13,7 +13,7 @@
     "shortDescription": "Carry work between AI tools"
   },
   "name": "chat-handoff",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A ChatGPT plugin for moving chat and project work to new conversations or other AI tools, preserving context, decisions, files, and next steps.",
   "author": {
     "name": "Bradley Rossiter",
