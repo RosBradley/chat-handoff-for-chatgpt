@@ -159,7 +159,7 @@ The repository is [RosBradley/chat-handoff-for-chatgpt](https://github.com/RosBr
 Once the initial source is uploaded, contributors can clone it:
 
 ```bash
-git clone https://github.com/RosBradley/chat-handoff-for-chatgpt.git
+git clone https://github.com/RosBradley/chat-handoff-for-chatgpt
 cd chat-handoff-for-chatgpt
 ```
 
@@ -185,7 +185,7 @@ cd ~/Developer/chat-handoff-for-chatgpt
 git init -b main
 git add .
 git commit -m "Initial Chat Handoff release"
-git remote add origin https://github.com/RosBradley/chat-handoff-for-chatgpt.git
+git remote add origin https://github.com/RosBradley/chat-handoff-for-chatgpt
 git push -u origin main
 ```
 

@@ -62,7 +62,7 @@ ZIP building, unit tests and GitHub CI/release definitions.
 
 Run validation, tests and build locally, then follow the user's next requested
 change. Test real usage in Codex using disposable example files. For authorized
-GitHub work, use https://github.com/RosBradley/chat-handoff-for-chatgpt.git and
+GitHub work, use https://github.com/RosBradley/chat-handoff-for-chatgpt and
 inspect its current state before pushing. Do not create a second repository.
 
 ## What not to redo
