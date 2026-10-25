@@ -137,17 +137,10 @@ def write_zip(output: Path, entries: list[tuple[str, bytes]]) -> None:
 def build(output: Path, root: Path = ROOT) -> list[Path]:
     version = validate(root)["version"]
     files = source_files(root)
-    source = output / f"chat-handoff-for-chatgpt-{version}.zip"
     plugin = output / f"chat-handoff-plugin-{version}.zip"
-    skill = output / f"chat-handoff-skill-{version}.zip"
-    source_entries = [(f"chat-handoff-for-chatgpt/{p.relative_to(root).as_posix()}", p.read_bytes()) for p in files]
     plugin_files = [p for p in files if p.relative_to(root).parts[0] in {"skills", ".codex-plugin"} or (p.name in {"plugin.json", "LICENSE", "NOTICE.md"} and p.parent == root)]
     plugin_entries = [(f"chat-handoff/{p.relative_to(root).as_posix()}", p.read_bytes()) for p in plugin_files]
-    skill_entries = [(f"chat-handoff/{p.relative_to(root / 'skills' / NAME).as_posix()}", p.read_bytes()) for p in files if p.is_relative_to(root / "skills" / NAME)]
-    skill_entries += [(f"chat-handoff/{name}", (root / name).read_bytes()) for name in ("LICENSE", "NOTICE.md")]
-    write_zip(source, source_entries)
     write_zip(plugin, plugin_entries)
-    write_zip(skill, skill_entries)
     checksums = output / "SHA256SUMS.txt"
-    checksums.write_text("".join(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}\n" for p in (source, plugin, skill)), encoding="utf-8")
-    return [source, plugin, skill, checksums]
+    checksums.write_text(f"{hashlib.sha256(plugin.read_bytes()).hexdigest()}  {plugin.name}\n", encoding="utf-8")
+    return [plugin, checksums]

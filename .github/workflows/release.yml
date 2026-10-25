@@ -27,4 +27,5 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release create "$RELEASE_TAG" dist/*.zip dist/SHA256SUMS.txt --verify-tag --title "Chat Handoff $RELEASE_TAG" --notes "Source, plugin and standalone skill packages. See CHANGELOG.md and docs/setup.md in the source package."
+          version="${RELEASE_TAG#v}"
+          gh release create "$RELEASE_TAG" "dist/chat-handoff-plugin-${version}.zip" dist/SHA256SUMS.txt --verify-tag --title "Chat Handoff $RELEASE_TAG" --notes "Download chat-handoff-plugin-${version}.zip for installation; it includes the skill. SHA256SUMS.txt verifies that ZIP. See https://github.com/$GH_REPO/blob/$RELEASE_TAG/docs/setup.md for installation instructions. GitHub's automatic source downloads are for development."

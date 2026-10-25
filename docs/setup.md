@@ -73,11 +73,11 @@ or needs to provide copyable handoff text.
 | File | Intended use |
 | --- | --- |
 | chat-handoff-plugin-1.1.2.zip | ChatGPT Plugin Creator installation above. |
-| chat-handoff-for-chatgpt-1.1.2.zip | Full source repository for development or the local Codex installer. |
-| chat-handoff-skill-1.1.2.zip | Standalone skill folder for clients that explicitly support that format. |
+| SHA256SUMS.txt | Checksum for the plugin ZIP. |
+| GitHub Source code (zip / tar.gz) | Repository files for development or the local Codex installer. |
 
-The plugin package contains the skill; you do not also need to install the
-standalone skill. Avoid enabling both copies in the same scope.
+The plugin package already contains the skill, references and templates.
+There is no separate skill download to install.
 
 ### Basis and availability
 
@@ -97,8 +97,8 @@ successful installation in a different user's account. See [validation](validati
 These steps are for local Codex users. ChatGPT users can use the installation
 above without running these commands.
 
-Download and extract the full source ZIP. Open a terminal in its
-chat-handoff-for-chatgpt folder. Python 3.10 or newer is required; on Windows
+Clone the repository or extract GitHub's automatic **Source code (zip)**
+download. Open a terminal in the extracted repository folder. Python 3.10 or newer is required; on Windows
 substitute `py -3` for `python3`.
 
 For your local user across repositories:
@@ -156,7 +156,7 @@ uncommitted work. A remote link does not make local edits available elsewhere.
 ## Develop the source in Codex
 
 The repository is [RosBradley/chat-handoff-for-chatgpt](https://github.com/RosBradley/chat-handoff-for-chatgpt).
-Once the initial source is uploaded, contributors can clone it:
+Contributors can clone it:
 
 ```bash
 git clone https://github.com/RosBradley/chat-handoff-for-chatgpt
@@ -169,31 +169,5 @@ copy, fork the repository first and clone your fork's URL instead.
 Open that local folder in Codex and ask it to read AGENTS.md and
 docs/CODEX-HANDOFF.md before making changes. Build commands are in the README's
 maintainer section; ordinary ChatGPT users download the already-built plugin
-package. The source ZIP is also available to seed the initial repository or
-inspect the code without Git history.
-
-## Upload the initial source to the existing GitHub repository
-
-The maintainer has created
-[chat-handoff-for-chatgpt](https://github.com/RosBradley/chat-handoff-for-chatgpt).
-For the first upload to an empty GitHub repository, extract the current source
-ZIP into ~/Developer/chat-handoff-for-chatgpt. Preserve any older local folder
-separately before extracting. Then run:
-
-```bash
-cd ~/Developer/chat-handoff-for-chatgpt
-git init -b main
-git add .
-git commit -m "Initial Chat Handoff release"
-git remote add origin https://github.com/RosBradley/chat-handoff-for-chatgpt
-git push -u origin main
-```
-
-These commands assume the extracted folder has not already been initialized
-and the GitHub repository has no commits. If it already contains files, clone
-it first, copy the source files into that checkout while retaining its .git
-directory, and commit and push from there. Do not force-push to replace history.
-
-This source package does not itself upload files or publish release assets.
-After the source is on GitHub, use [releasing](releasing.md) to publish the plugin
-ZIP for regular ChatGPT users. Do not reuse the Claude repository's remote.
+package. GitHub's automatic source downloads let developers inspect the code
+without cloning Git history.

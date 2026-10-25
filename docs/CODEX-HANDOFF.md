@@ -12,13 +12,14 @@ Source version 1.1.2. The existing private account plugin was created separately
 as 1.0.0; this repository preparation does not publish an update to it.
 
 One maintained skill: skills/chat-handoff. Both plugin manifests package it.
-The source ZIP is a working tree. The previously supplied 1.0.1 ZIP, Git bundle
+Use the repository or GitHub's automatic source downloads for development. The previously supplied 1.0.1 ZIP, Git bundle
 and transfer package are older snapshots and do not contain the 1.1.0 command
 changes. The owner has created the repository at
 https://github.com/RosBradley/chat-handoff-for-chatgpt.
 The source is uploaded. The Windows packaging fix passed hosted CI on Ubuntu
-and Windows with Python 3.11 and 3.13. Version 1.1.2 is prepared for publication;
-verify its release assets on GitHub before claiming publication succeeded.
+and Windows with Python 3.11 and 3.13. Version 1.1.2 is published.
+Release downloads are simplified to the plugin ZIP and its checksum file.
+Future builds and release workflows must keep that two-file contract.
 
 The agreed public description is: A ChatGPT plugin for moving chat and project
 work to new conversations or other AI tools, preserving context, decisions,

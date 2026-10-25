@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Build and publish only the plugin ZIP and its single-entry checksum file.
+- Use GitHub's automatic source downloads for development; the plugin already
+  includes the skill, so separate source and skill release assets are unnecessary.
+
 ## 1.1.2 — 2026-10-25
 
 - Validate ZIP entry paths consistently across Windows, macOS and Linux.

@@ -122,7 +122,7 @@ locking. Missing required files make a transfer partial.
 No fixed token, cost or speed savings are claimed. The benefit is deliberately
 preserving the information needed to continue.
 
-## One source, multiple packages
+## One source, one plugin package
 
 Maintain [skills/chat-handoff](skills/chat-handoff/) only. The installer creates
 a local copy for Codex discovery; build scripts package that same source.
@@ -141,7 +141,7 @@ a local copy for Codex discovery; build scripts package that same source.
 ## Develop in Codex
 
 Clone the [repository](https://github.com/RosBradley/chat-handoff-for-chatgpt)
-or extract the full source ZIP. Open the
+or extract GitHub's automatic **Source code (zip)** download. Open the
 `chat-handoff-for-chatgpt` folder in Codex and ask it to read `AGENTS.md` and
 `docs/CODEX-HANDOFF.md` before making changes.
 To install the skill for this local repository, run:
@@ -163,8 +163,8 @@ python3 -m unittest discover -s tests -v
 python3 scripts/build.py
 ```
 
-Builds produce three ZIPs and checksums in `dist/`: full source, plugin and
-standalone skill. Building never publishes or updates an installed account
+Builds produce one plugin ZIP and `SHA256SUMS.txt` in `dist/`.
+The plugin ZIP already contains the skill and its supporting files. Building never publishes or updates an installed account
 plugin. CI checks pushes and pull requests. Release publication runs only for
 an intentionally pushed version tag; see [releasing](docs/releasing.md).
 

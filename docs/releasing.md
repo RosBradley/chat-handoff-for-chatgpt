@@ -3,12 +3,13 @@
 ## Local build
 
 Run validation, tests and scripts/build.py from README.md. The output directory
-contains a source ZIP, a plugin ZIP, a standalone skill ZIP and SHA256SUMS.txt.
-Archives use fixed metadata and sorted entries for repeatable bytes.
+contains only chat-handoff-plugin-VERSION.zip and SHA256SUMS.txt. The checksum
+file contains one entry for that plugin ZIP. Archives use fixed metadata and
+sorted entries for repeatable bytes.
 
-The source package includes repository documentation and tests. Plugin packages
-contain only the manifests, skill and license/notice. Neither includes local
-handoffs, generated installations, Git internals or secrets.
+The plugin contains only the manifests, skill and license/notice. It excludes
+local handoffs, generated installations, Git internals and secrets. Developers
+can clone the repository or use GitHub's automatic source downloads.
 
 ## Version
 
@@ -26,8 +27,12 @@ The source repository is
 [RosBradley/chat-handoff-for-chatgpt](https://github.com/RosBradley/chat-handoff-for-chatgpt).
 Publish downloads on its
 [Releases page](https://github.com/RosBradley/chat-handoff-for-chatgpt/releases).
-The plugin ZIP is the installation download for ordinary ChatGPT users; the
-source ZIP is for repository setup and development.
+The plugin ZIP is the installation download for ordinary ChatGPT users and
+already includes the skill. Publish only that ZIP and its checksum file. GitHub
+also displays automatic Source code downloads; these are for developers.
+
+The release workflow names the plugin ZIP explicitly so older archives left in
+a local output directory cannot be uploaded accidentally.
 
 CI runs validation, unit tests and builds on pushes and pull requests.
 The release workflow runs for a vMAJOR.MINOR.PATCH tag and checks that the tag
@@ -35,7 +40,8 @@ matches the manifest. Only deliberately push a release tag when ready to publish
 
 The release job publishes build artifacts using the repository's GitHub token.
 Repository policies may require enabling Actions or granting release permissions.
-No hosted workflow has been run as part of the local repository preparation.
+Hosted validation and release workflows passed for v1.1.2. Verify the workflow
+results and uploaded assets for every future release.
 
 ## Public plugin directory
 

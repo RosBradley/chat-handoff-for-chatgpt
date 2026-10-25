@@ -105,19 +105,19 @@ class RepositoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "UI metadata"):
             validate(root)
 
-    def test_packages_have_distinct_contents_and_licenses(self):
+    def test_build_contains_only_plugin_and_checksum(self):
         paths = build(self.base / "dist", ROOT)
+        version = validate(ROOT)["version"]
+        self.assertEqual([p.name for p in paths], [f"chat-handoff-plugin-{version}.zip", "SHA256SUMS.txt"])
+        self.assertEqual(set(paths[0].parent.iterdir()), set(paths))
         with zipfile.ZipFile(paths[0]) as z:
-            self.assertIn("chat-handoff-for-chatgpt/AGENTS.md", z.namelist())
-            self.assertIn("chat-handoff-for-chatgpt/tests/test_repository.py", z.namelist())
-        with zipfile.ZipFile(paths[1]) as z:
-            self.assertIn("chat-handoff/plugin.json", z.namelist())
-            self.assertIn("chat-handoff/LICENSE", z.namelist())
-            self.assertFalse(any("/tests/" in n for n in z.namelist()))
-        with zipfile.ZipFile(paths[2]) as z:
-            self.assertIn("chat-handoff/SKILL.md", z.namelist())
-            self.assertIn("chat-handoff/LICENSE", z.namelist())
-            self.assertNotIn("chat-handoff/plugin.json", z.namelist())
+            expected = {f"chat-handoff/{p.relative_to(ROOT).as_posix()}" for p in (ROOT / "skills").rglob("*") if p.is_file()}
+            expected.update(f"chat-handoff/{name}" for name in ("plugin.json", ".codex-plugin/plugin.json", "LICENSE", "NOTICE.md"))
+            self.assertEqual(set(z.namelist()), expected)
+            for name in ("LICENSE", "NOTICE.md"):
+                self.assertEqual(z.read(f"chat-handoff/{name}"), (ROOT / name).read_bytes())
+        lines = paths[1].read_text().splitlines()
+        self.assertEqual(lines, [f"{hashlib.sha256(paths[0].read_bytes()).hexdigest()}  {paths[0].name}"])
 
     def test_build_reproducible_and_checksums_match(self):
         first = build(self.base / "one", ROOT)
