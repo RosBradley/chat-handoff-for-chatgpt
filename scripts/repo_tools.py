@@ -4,7 +4,7 @@ import hashlib
 import json
 import re
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,7 +117,8 @@ def write_zip(output: Path, entries: list[tuple[str, bytes]]) -> None:
     if len(names) != len({name.casefold() for name in names}):
         raise ValueError("Duplicate archive names")
     for name in names:
-        p = Path(name)
+        # ZIP entry names use forward slashes regardless of the build host.
+        p = PurePosixPath(name)
         if p.is_absolute() or ".." in p.parts or "\\" in name or re.match(r"^[A-Za-z]:", name):
             raise ValueError(f"Unsafe archive path: {name}")
     output.parent.mkdir(parents=True, exist_ok=True)

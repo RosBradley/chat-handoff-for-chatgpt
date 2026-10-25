@@ -140,7 +140,13 @@ class RepositoryTests(unittest.TestCase):
                 self.assertTrue(all(private_value.encode() not in z.read(n) for n in z.namelist()))
 
     def test_unsafe_and_duplicate_archive_paths_rejected(self):
-        for entries in ([("../escape", b"x")], [("/absolute", b"x")], [("C:/absolute", b"x")], [("A.md", b"x"), ("a.md", b"y")]):
+        unsafe_names = (
+            "../escape", "nested/../../escape", "/absolute", "//server/share",
+            "C:/absolute", "C:relative", "\\absolute", "nested\\file",
+        )
+        cases = [[(name, b"x")] for name in unsafe_names]
+        cases.append([("A.md", b"x"), ("a.md", b"y")])
+        for entries in cases:
             with self.subTest(entries=entries):
                 with self.assertRaises(ValueError):
                     write_zip(self.base / "bad.zip", entries)
