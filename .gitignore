@@ -1,0 +1,13 @@
+dist/
+.agents/skills/
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+# Working handoffs may contain private project data
+/handoffs/
+.env
+.env.*
+.DS_Store
+__MACOSX/
+._*

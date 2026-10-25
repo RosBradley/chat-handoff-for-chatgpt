@@ -1,0 +1,30 @@
+name: Release
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Validate tag and source
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python scripts/validate_repo.py
+          python -c 'import json,os; v=json.load(open("plugin.json"))["version"]; assert os.environ["RELEASE_TAG"] == "v"+v, "Tag/version mismatch"'
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build.py
+      - name: Publish release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$RELEASE_TAG" dist/*.zip dist/SHA256SUMS.txt --verify-tag --title "Chat Handoff $RELEASE_TAG" --notes "Source, plugin and standalone skill packages. See CHANGELOG.md and docs/setup.md in the source package."

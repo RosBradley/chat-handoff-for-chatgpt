@@ -1,0 +1,31 @@
+{
+  "interface": {
+    "capabilities": [],
+    "category": "Productivity",
+    "defaultPrompt": [
+      "Prepare a portable handoff of this work for another AI.",
+      "Pick up the work described in this attached handoff.",
+      "Export the accessible project context and files for another AI."
+    ],
+    "developerName": "Bradley Rossiter",
+    "displayName": "Chat Handoff",
+    "longDescription": "A ChatGPT plugin for moving chat and project work to new conversations or other AI tools, preserving context, decisions, files, and next steps. Review side-chat proposals before adopting them. Supports lightweight handoff/.push, full-package transfer/.export, pickup, fold, handoffs, and export project. Uses available host file and context capabilities; does not automatically copy native chat histories, access unseen projects, or send data to another AI service.",
+    "shortDescription": "Carry work between AI tools"
+  },
+  "name": "chat-handoff",
+  "version": "1.1.1",
+  "description": "A ChatGPT plugin for moving chat and project work to new conversations or other AI tools, preserving context, decisions, files, and next steps.",
+  "author": {
+    "name": "Bradley Rossiter",
+    "email": "brossiter@danovoenergy.com"
+  },
+  "keywords": [
+    "handoff",
+    "context",
+    "projects",
+    "migration",
+    "portability"
+  ],
+  "skills": "./skills",
+  "repository": "https://github.com/RosBradley/chat-handoff-for-chatgpt"
+}

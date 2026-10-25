@@ -1,0 +1,4 @@
+interface:
+  display_name: "Chat Handoff"
+  short_description: "Carry projects and chats between AI tools"
+  default_prompt: "Use $chat-handoff to prepare a portable handoff of this work for a new chat or another AI."
